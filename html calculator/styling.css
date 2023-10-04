@@ -1,0 +1,26 @@
+button
+{
+	background-color: powderblue;
+	height: 120px;
+	width: 120px;
+	font-size: 24px;
+}
+button:hover
+{
+	background-color: gray;
+}
+input
+{
+	background-color: powderblue;
+	height: 40px;
+	width: 472px;
+	font-size: 24px;
+}
+#preValue
+{
+	text-align: right;
+}
+#preOp
+{
+	text-align: right;
+}

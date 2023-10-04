@@ -1,0 +1,64 @@
+	<footer id="footer">
+		&copy eatyourway 2023. All Rights Reserved.<br>
+		<span id="credits"></span>
+		<script type="text/javascript">
+			
+			let htmls = {"file name":"html needed",
+						 "arrow.png":'<a href="https://www.flaticon.com/free-icons/back" title="back icons">Back icons created by Ilham Fitrotul Hayat - Flaticon</a>',
+						 "barcode.png":'<a href="https://www.vecteezy.com/free-vector/barcode-icon">Barcode Icon Vectors by Vecteezy</a>',
+						 "barcode-graphic.png":'<a href="https://www.freepik.com/free-vector/online-delivery-phone-concept-officer-scan-qr-code-from-packaging-recipient-address-location-target-customer-marketing-digital-marketing-promotion-online-stores-vector-illustration_21586038.htm">Image by jcomp</a> on Freepik',
+						 "camera.png":'<a href="https://www.flaticon.com/free-icons/switch-camera" title="switch camera icons">Switch camera icons created by srip - Flaticon</a>',
+						 "landing-graphic.png":'<a href="https://www.freepik.com/free-vector/barcode-concept-illustration_17195481.htm">Image by storyset</a> on Freepik',
+						 "menu.png":'<a href="https://www.vecteezy.com/free-vector/hamburger-menu-icon">Hamburger Menu Icon Vectors by Vecteezy</a>',
+						 "user.png":'<a href="https://www.vecteezy.com/free-vector/profile-icon">Profile Icon Vectors by Vecteezy</a>',
+						 "team-graphic.png":'<a href="https://www.vecteezy.com/free-vector/business">Business Vectors by Vecteezy</a>',
+						 "add.png":'<a href="https://www.flaticon.com/free-icons/plus" title="plus icons">Plus icons created by srip - Flaticon</a>',
+						 "close.png":'<a href="https://www.vecteezy.com/free-vector/web">Web Vectors by Vecteezy</a>',
+						 "cross.png":'<a href="https://www.vecteezy.com/free-vector/web">Web Vectors by Vecteezy</a>',
+						 "hide.png":'<a href="https://www.vecteezy.com/free-vector/web">Web Vectors by Vecteezy</a>',
+						 "visible.png":'<a href="https://www.flaticon.com/free-icons/password" title="password icons">Password icons created by th studio - Flaticon</a>',
+						 "more.png":'<a href="https://www.vecteezy.com/free-vector/web">Web Vectors by Vecteezy</a>',
+						 "data.png":'<a href="https://www.vecteezy.com/free-vector/woman">Woman Vectors by Vecteezy</a>',
+						 "question.png":'<a href="https://www.vecteezy.com/free-vector/vector">Vector Vectors by Vecteezy</a>',
+						 "registered.png":'<a href="https://www.vecteezy.com/free-vector/cartoon">Cartoon Vectors by Vecteezy</a>',
+						 "green-tick.png":'<a href="https://www.vecteezy.com/free-vector/tick-icon">Tick Icon Vectors by Vecteezy</a>',
+						 "white-tick.png":'<a href="https://www.vecteezy.com/free-vector/tick-icon">Tick Icon Vectors by Vecteezy</a>',
+						 "tick-circle.png":'<a href="https://www.vecteezy.com/free-vector/tick-icon">Tick Icon Vectors by Vecteezy</a>',
+						 "barcode-scanner": '<a href="./barcode-scanner-credits.php">Barcode Scanner by ZXingJS</a>'};
+			
+			let locations = {"page name":"relevant files",
+						     "about.php":null,
+						     "contact.php":null,
+						     "faq.php":null,
+						     "header.html":["menu.png","user.png"],
+						     "index.php":["landing-graphic.png"],
+						     "":["landing-graphic.png"],
+						     "privacy policy.php":null,
+						     "register.php":null,
+						     "results.php":["cross.png","tick-circle.png","arrow.png","question.png"],
+						     "scan(change).php":null,
+						     "scan(search).php":["camera.png","arrow.png"],
+						     "scan(search-manual).php":["arrow.png","barcode-graphic.png"],
+						     "scan(start).php":["arrow.png"],
+						     "sign-in.php":null,
+						     "terms.php":null,
+						     "info.php":["arrow.png"],
+						     "explain.php":["arrow.png"],
+						     "barcode-scanner-credits.php":["arrow.png"]};
+			
+			let to_write = htmls["menu.png"]+" | ";
+			to_write+=htmls["user.png"]+" | ";
+			let url = window.location.pathname;
+			let page_name = url.substring(url.lastIndexOf('/')+1);
+			let relevant_files = locations[page_name];
+			if (relevant_files != null){
+				for (var i=0;i<relevant_files.length;i++){
+					to_write+=htmls[relevant_files[i]]+" | ";
+				}
+			}
+			
+			to_write = to_write.slice(0,to_write.length-3);
+			document.getElementById("credits").innerHTML = to_write;
+
+		</script>
+	</footer>

@@ -1,0 +1,66 @@
+
+<!-- USE DEVELOPER TOOLS (INSPECT) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="styling.css">
+	<title>Calculator JS Demo</title>
+	<script type="text/javascript">
+		document.write("<input id='preValue' value='0'><br><input id='preOp' value=''><br>")
+		document.write("<input id='theDisplay'><br>")
+
+		function doCalc(op)
+		{
+			preValue = Number(document.getElementById("preValue").value);
+			preOp = document.getElementById("preOp").value;
+			curValue = Number(document.getElementById("theDisplay").value);
+			
+			if (preOp == "+")
+				newValue = preValue + curValue
+			if (preOp == "-")
+				newValue = preValue - curValue
+			if (preOp == "*")
+				newValue = preValue * curValue
+			if (preOp == "/")
+				newValue = preValue / curValue
+			if (preOp =="")
+				newValue = curValue
+
+			document.getElementById("theDisplay").value = "";
+			document.getElementById("preOp").value = op;
+			document.getElementById("preValue").value = newValue;
+			if (op == "=")
+				document.getElementById("theDisplay").value = newValue;
+		}
+
+
+		function updateDisplay(num)
+		{
+			curVal = document.getElementById("theDisplay").value;
+			curVal += num;
+			document.getElementById("theDisplay").value = curVal;
+		}
+
+		numbers = ["7","8","9","4","5","6","1","2","3",".","0","="];
+		ops = ["+","-","*","/"];
+
+		for (var i=0; i<numbers.length; i++)
+		{
+			if (numbers[i]=="=")
+				document.write('<button onclick="doCalc(&quot;'+numbers[i]+'&quot;)">'+numbers[i]+'</button>');
+			else
+				document.write('<button onclick="updateDisplay(&quot;'+numbers[i]+'&quot;)">'+numbers[i]+'</button>');
+			if (i%3==2)
+			{
+				op = ops.pop()
+				document.write('<button onclick="doCalc(&quot;'+op+'&quot;)">'+op+'</button>');
+				document.write("<br>");
+			}
+		}
+
+	</script>
+</head>
+<body>
+</body>
+</html>

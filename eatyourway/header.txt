@@ -1,0 +1,92 @@
+    <header id="header">
+        <a href="index.php"><img src="images/logo.png" height="50vh" id="logo"></a>
+    </header>
+    <nav id="nav" width=100%>
+        <a onclick="toggleMenu()" href="#" ><img src="images/menu.png" width="30px"></a>
+        <a href="scan(start).php" title="signed in as [user_name]" id="user" width=100%><img src="images/user.png" height=30px></a>
+        <ul id="menu">
+            <li><a href="scan(search).php">Start Scanning</a></li>
+            <hr>
+            <li><a href="about.php">About Us</a></li>
+            <hr>
+            <li><a href="faq.php">Frequently Asked Questions</a></li>
+            <hr>
+            <li><a href="contact.php">Contact Us</a></li>
+            <hr>
+            <li><a href="privacy policy.php">Our Data</a></li>
+            <hr>
+            <li><a href="terms.php">Terms and Conditions</a></li>
+        </ul>
+        <script type="text/javascript">document.getElementById("menu").style.visibility = "hidden";</script>
+        <script type="text/javascript">
+            
+            function toggleMenu() {
+                if (document.getElementById("menu").style.visibility == "hidden"){
+                    document.getElementById("menu").style.visibility = "visible";
+                    document.getElementById("menu").style.height = "230px";
+                }
+                else {
+                    document.getElementById("menu").style.visibility = "hidden";
+                    document.getElementById("menu").style.height = "0px";
+                }
+            }
+            
+            function userMenu() {
+                if (document.getElementById("user").style.visibility == "hidden")
+                    document.getElementById("user").style.visibility = "visible"
+                else
+                    document.getElementById("user").style.visibility = "hidden"
+            }
+
+        </script>
+        <script type="text/javascript">
+        
+            function getUsername(){
+                if(document.cookie.indexOf('username=')!=-1){
+                    var username=document.cookie.split('username=')[1].split(';')[0];
+                    return(username);
+                }else{
+                    return("Guest");
+                }
+            }
+
+            function getPreferences(){
+                if(document.cookie.indexOf('username=')!=-1){
+
+                    var dietary_preferences = document.cookie.split('stored=')[1].split(';')[0];
+                    dietary_preferences = decodeURIComponent(dietary_preferences);
+                    return(JSON.parse(dietary_preferences));
+                    
+                }else{
+                     var this_dict = {"exclude brands":[],
+                                     "exclude ingredients":[],
+                                     "exclude plastics":false,
+                                     "exclude palm":false,
+                                     "only vegetarian":false,
+                                     "only vegan":false,
+                                     "min nutrigrade":"E",
+                                     "min ecograde":"E",
+                                     "max nova":4,
+                                     "max co2/g":1000};
+                    return(this_dict);
+                }
+            }
+
+            function nullToUnknown(data) {
+                //simple function takes data dict and turns nulls (ie. no info found in api) and turns into user understanble "unknown"s
+                for (let key in data) if (data[key] == null && key!="status") data[key] = "unknown";
+                return data;
+            }
+
+            function isLoggedIn(){
+                if(document.cookie.indexOf('username=')==-1){
+                    return(false);
+                }else{
+                    return(true);
+                }
+            }
+            
+            document.getElementById("user").title = "signed in as " + getUsername();
+            
+        </script>
+    </nav>
